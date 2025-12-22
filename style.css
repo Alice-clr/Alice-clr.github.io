@@ -1,4 +1,4 @@
-/* 1. RESET STANDAR */
+/* RESET STANDAR */
 * {
     margin: 0;
     padding: 0;
@@ -8,111 +8,58 @@
 body, html {
     width: 100%;
     height: 100%;
-    font-family: 'Inter', sans-serif;
-    background-color: #000; /* Warna cadangan */
-    color: #fff;
-    overflow: hidden; /* Mencegah scroll di halaman utama */
+    background-color: #000;
+    overflow: hidden;
 }
 
-/* 2. CONTAINER BACKGROUND SLIDER */
+/* CONTAINER BACKGROUND */
 .background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Lapisan paling bawah */
+    z-index: 1;
 }
 
-/* PENGATURAN SLIDE */
+/* SEMUA SLIDE MENUMPUK DI SATU TITIK */
 .mySlides {
-    display: none; 
-    position: absolute; /* Gambar menumpuk di satu titik yang sama */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0; /* Semua gambar transparan dulu */
+    transition: opacity 2s ease-in-out; /* INI KUNCI TRANSISI HALUS */
 }
 
-/* Memaksa gambar tampil full screen */
+/* GAMBAR FULL SCREEN */
 .mySlides img {
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
     filter: brightness(60%);
 }
 
-/* ANIMASI CROSSFADE YANG LEBIH HALUS */
-.fade {
-    animation-name: crossfade;
-    animation-duration: 2.5s; /* Durasi transisi (lebih lama = lebih halus) */
-    animation-fill-mode: forwards;
+/* CLASS AKTIF (DIPANGGIL OLEH JS) */
+.mySlides.active {
+    opacity: 1; /* Gambar yang punya class 'active' akan muncul perlahan */
 }
 
-@keyframes crossfade {
-    from { 
-        opacity: 0; 
-    }
-    to { 
-        opacity: 1; 
-    }
-}
-
-/* 5. NAVIGASI (DI ATAS GAMBAR) */
+/* NAVIGASI DAN TEKS */
 nav {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 40px 60px;
-    position: relative;
-    z-index: 10; /* Lapisan paling atas */
 }
 
-.logo {
-    font-weight: 600;
-    letter-spacing: 5px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 12px;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #fff;
-}
-
-/* 6. TEKS TENGAH (HERO) */
 .hero-content {
     position: absolute;
     top: 50%;
     left: 60px;
     transform: translateY(-50%);
-    z-index: 5; /* Di atas background, di bawah nav */
+    z-index: 5;
     color: #fff;
-    pointer-events: none; /* Agar tidak mengganggu klik menu */
-}
-
-.hero-content p {
-    font-size: 14px;
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    opacity: 0.8;
-}
-
-/* 7. FALLBACK: Jika JS gagal, gambar pertama tetap muncul */
-.mySlides:first-child {
-    display: block;
 }
