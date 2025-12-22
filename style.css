@@ -41,6 +41,65 @@ body, html {
 .mySlides:first-child {
     display: block;
 }
+
+/* NAVIGASI (DI ATAS GAMBAR) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 4px;
+    font-size: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    transition: 0.4s;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+/* TEKS TENGAH (OPTIONAL) */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    color: #fff;
+    z-index: 5;
+}
+
+.hero-text p {
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* ANIMASI TRANSISI */
+.fade {
+    animation-name: fade;
+    animation-duration: 2.5s; /* Kecepatan transisi memudar */
+}
+
 @keyframes fade {
     from {opacity: 0.2} 
     to {opacity: 1}
