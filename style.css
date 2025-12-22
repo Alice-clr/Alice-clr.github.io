@@ -86,19 +86,23 @@ nav ul li a:hover {
     color: #fff;
 }
 
-/* TEXT TENGAH */
+/* TEXT TENGAH (HERO) - POSISI PRESISI DI TENGAH LAYAR */
 .hero-content {
-    flex-grow: 1; /* Mengambil sisa ruang di bawah navigasi */
-    display: flex;
-    align-items: center;      /* Pusatkan secara vertikal */
-    justify-content: center;   /* Pusatkan secara horizontal */
-    text-align: center;        /* Pastikan teks di dalam baris juga rata tengah */
-    width: 100%;               /* Memastikan container selebar layar */
-    padding: 0;
+    position: absolute;        /* Keluar dari aliran flex agar tidak terdorong navigasi */
+    top: 50%;                  /* Titik atas di tengah vertikal */
+    left: 50%;                 /* Titik kiri di tengah horizontal */
+    transform: translate(-50%, -50%); /* Geser kembali sejauh setengah ukuran teksnya sendiri */
+    z-index: 5;                /* Di bawah navigasi, di atas background */
+    text-align: center;
+    width: 100%;               /* Memastikan area teks mencakup lebar layar */
+    pointer-events: none;      /* Supaya tidak menghalangi klik jika ada link di belakangnya */
 }
 
 .hero-content p {
     font-size: 14px;
-    letter-spacing: 8px;
+    letter-spacing: 12px;      /* Jarak antar huruf arsitektural */
     text-transform: uppercase;
+    margin-right: -12px;       /* Menyeimbangkan spasi huruf terakhir agar simetris */
+    color: #fff;
+    font-weight: 300;          /* Membuat teks terlihat lebih tipis dan elegan */
 }
