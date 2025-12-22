@@ -1,71 +1,90 @@
-/* Pengaturan Umum */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
     margin: 0;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px 0;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    padding: 40px;
 }
 
-/* Header */
-header {
-    background: #2c3e50;
-    color: #fff;
-    padding: 100px 0;
-    text-align: center;
+/* Navigasi Minimalis */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
 }
 
-header h1 {
-    font-size: 3rem;
+.logo {
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
-.highlight {
-    color: #3498db;
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
 
-.btn {
-    display: inline-block;
-    background: #3498db;
-    color: #fff;
-    padding: 10px 20px;
+nav ul li a {
     text-decoration: none;
-    border-radius: 5px;
-    margin-top: 20px;
+    color: #999;
+    font-size: 0.8rem;
+    transition: 0.3s;
 }
 
-/* Section */
-h2 {
-    border-bottom: 2px solid #3498db;
-    display: inline-block;
-    margin-bottom: 20px;
+nav ul li a:hover {
+    color: #000;
 }
 
-/* Proyek Grid */
-.proyek-grid {
+/* Grid Proyek (Inspirasi Masonry/Clean Grid) */
+.gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
 }
 
-.proyek-item {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+.project-card {
+    cursor: pointer;
+    overflow: hidden;
 }
 
-/* Footer */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 40px 0;
-    margin-top: 50px;
+.project-card img {
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%); /* Membuat foto hitam putih khas arsitek */
+    transition: 0.5s ease;
+}
+
+.project-card:hover img {
+    filter: grayscale(0%); /* Berubah warna saat disentuh mouse */
+    transform: scale(1.02);
+}
+
+.project-info {
+    margin-top: 15px;
+}
+
+.project-info h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.project-info p {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 5px;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 600px) {
+    body { padding: 20px; }
+    nav { flex-direction: column; gap: 20px; }
+    .gallery { grid-template-columns: 1fr; }
 }
