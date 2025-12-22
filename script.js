@@ -5,19 +5,19 @@ function showSlides() {
     let i;
     let slides = document.getElementsByClassName("mySlides");
     
-    // Sembunyikan semua gambar secara perlahan
+    // Hilangkan class 'active' dari semua gambar
     for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-        slides[i].style.zIndex = "1"; // Kembalikan semua ke layer bawah
+        slides[i].classList.remove("active");
     }
     
     slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }    
     
-    // Tampilkan gambar berikutnya
-    slides[slideIndex-1].style.display = "block";  
-    slides[slideIndex-1].style.zIndex = "2"; // Gambar yang aktif naik ke atas
+    // Tambahkan class 'active' ke gambar yang harus muncul
+    slides[slideIndex-1].classList.add("active");
     
-    // Waktu tunggu antar gambar (5 detik)
+    // Ganti gambar setiap 5 detik
     setTimeout(showSlides, 5000); 
 }
