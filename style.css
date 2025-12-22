@@ -4,87 +4,95 @@
     box-sizing: border-box;
 }
 
-body {
+body, html {
+    height: 100%;
     font-family: 'Inter', sans-serif;
-    background-color: #ffffff;
-    color: #1a1a1a;
-    padding: 40px;
+    background-color: #000; /* Warna dasar jika gambar telat loading */
+    overflow: hidden; /* Mencegah scroll di halaman utama agar bersih */
 }
 
-/* Navigasi Minimalis */
+/* CONTAINER BACKGROUND SLIDER */
+.bg-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Meletakkan gambar di belakang teks */
+}
+
+.mySlides {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+.mySlides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar memenuhi layar tanpa gepeng */
+    filter: brightness(60%); /* Membuat gambar agak gelap agar menu terbaca jelas */
+}
+
+/* NAVIGASI (DI ATAS GAMBAR) */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 60px;
-    letter-spacing: 2px;
+    padding: 40px;
+    position: relative;
+    z-index: 10;
 }
 
 .logo {
+    color: #fff;
     font-weight: 600;
+    letter-spacing: 4px;
     font-size: 1.2rem;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 40px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #999;
-    font-size: 0.8rem;
-    transition: 0.3s;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    transition: 0.4s;
 }
 
 nav ul li a:hover {
-    color: #000;
+    color: #fff;
 }
 
-/* Grid Proyek (Inspirasi Masonry/Clean Grid) */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 40px;
+/* TEKS TENGAH (OPTIONAL) */
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translateY(-50%);
+    color: #fff;
+    z-index: 5;
 }
 
-.project-card {
-    cursor: pointer;
-    overflow: hidden;
+.hero-text p {
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    opacity: 0.8;
 }
 
-.project-card img {
-    width: 100%;
-    height: auto;
-    filter: grayscale(100%); /* Membuat foto hitam putih khas arsitek */
-    transition: 0.5s ease;
+/* ANIMASI TRANSISI */
+.fade {
+    animation-name: fade;
+    animation-duration: 2.5s; /* Kecepatan transisi memudar */
 }
 
-.project-card:hover img {
-    filter: grayscale(0%); /* Berubah warna saat disentuh mouse */
-    transform: scale(1.02);
-}
-
-.project-info {
-    margin-top: 15px;
-}
-
-.project-info h3 {
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
-.project-info p {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 5px;
-}
-
-/* Responsif untuk HP */
-@media (max-width: 600px) {
-    body { padding: 20px; }
-    nav { flex-direction: column; gap: 20px; }
-    .gallery { grid-template-columns: 1fr; }
+@keyframes fade {
+    from {opacity: 0.2} 
+    to {opacity: 1}
 }
