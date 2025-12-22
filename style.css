@@ -1,50 +1,71 @@
+/* 1. RESET STANDAR */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Pastikan dasar halaman transparan */
 body, html {
     width: 100%;
     height: 100%;
     font-family: 'Inter', sans-serif;
-    background-color: #000; /* Warna cadangan jika gambar gagal dimuat */
+    background-color: #000; /* Warna cadangan */
     color: #fff;
-    overflow: hidden;
+    overflow: hidden; /* Mencegah scroll di halaman utama */
 }
 
-/* BACKGROUND (Z-INDEX 1) */
+/* 2. CONTAINER BACKGROUND SLIDER */
 .background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Paling belakang */
+    z-index: 1; /* Lapisan paling bawah */
 }
 
-.background-container img {
+/* 3. PENGATURAN SLIDE GAMBAR */
+.mySlides {
+    display: none; /* Disembunyikan, akan dimunculkan oleh script.js */
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: brightness(60%); /* Agar teks putih tetap terbaca */
 }
 
-/* MENU NAVIGASI (Z-INDEX 10) */
+/* Memaksa gambar tampil full screen tanpa gepeng */
+.mySlides img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    display: block;
+    filter: brightness(60%); /* Membuat gambar agak gelap agar menu terbaca */
+}
+
+/* 4. ANIMASI TRANSISI (FADE) */
+.fade {
+    animation-name: fadeEffect;
+    animation-duration: 2.5s; /* Kecepatan memudar */
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* 5. NAVIGASI (DI ATAS GAMBAR) */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 40px 60px;
     position: relative;
-    z-index: 10; /* Lebih tinggi dari background */
+    z-index: 10; /* Lapisan paling atas */
 }
 
 .logo {
     font-weight: 600;
     letter-spacing: 5px;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 nav ul {
@@ -55,22 +76,35 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 12px;
     letter-spacing: 2px;
+    transition: 0.3s;
 }
 
-/* TEKS TENGAH (Z-INDEX 5) */
+nav ul li a:hover {
+    color: #fff;
+}
+
+/* 6. TEKS TENGAH (HERO) */
 .hero-content {
     position: absolute;
     top: 50%;
     left: 60px;
     transform: translateY(-50%);
-    z-index: 5; /* Di antara gambar dan navigasi */
+    z-index: 5; /* Di atas background, di bawah nav */
+    color: #fff;
+    pointer-events: none; /* Agar tidak mengganggu klik menu */
 }
 
 .hero-content p {
     font-size: 14px;
     letter-spacing: 8px;
     text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* 7. FALLBACK: Jika JS gagal, gambar pertama tetap muncul */
+.mySlides:first-child {
+    display: block;
 }
