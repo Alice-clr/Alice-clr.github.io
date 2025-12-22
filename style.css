@@ -11,87 +11,36 @@ body, html {
     overflow: hidden; /* Mencegah scroll di halaman utama agar bersih */
 }
 
-/* CONTAINER BACKGROUND SLIDER */
+/* Container utama background */
 .bg-slider {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Meletakkan gambar di belakang teks */
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Pastikan di belakang navigasi */
+    background-color: #000; /* Warna dasar saat transisi */
 }
 
+/* Memastikan setiap slide memenuhi layar */
 .mySlides {
-    display: none;
-    height: 100%;
+    display: none; /* Akan diubah jadi 'block' oleh JS */
     width: 100%;
+    height: 100%;
 }
 
+/* Memaksa gambar muncul full screen */
 .mySlides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Agar gambar memenuhi layar tanpa gepeng */
-    filter: brightness(60%); /* Membuat gambar agak gelap agar menu terbaca jelas */
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover; /* Agar gambar tidak gepeng */
+    display: block;
 }
 
-/* NAVIGASI (DI ATAS GAMBAR) */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
-    position: relative;
-    z-index: 10;
+/* Tambahkan ini untuk tes: Paksa slide pertama muncul tanpa JS */
+.mySlides:first-child {
+    display: block;
 }
-
-.logo {
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 4px;
-    font-size: 1.2rem;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 40px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: rgba(255,255,255,0.7);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    transition: 0.4s;
-}
-
-nav ul li a:hover {
-    color: #fff;
-}
-
-/* TEKS TENGAH (OPTIONAL) */
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
-    color: #fff;
-    z-index: 5;
-}
-
-.hero-text p {
-    letter-spacing: 5px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    opacity: 0.8;
-}
-
-/* ANIMASI TRANSISI */
-.fade {
-    animation-name: fade;
-    animation-duration: 2.5s; /* Kecepatan transisi memudar */
-}
-
 @keyframes fade {
     from {opacity: 0.2} 
     to {opacity: 1}
