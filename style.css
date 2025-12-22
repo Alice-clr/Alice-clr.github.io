@@ -24,31 +24,39 @@ body, html {
     z-index: 1; /* Lapisan paling bawah */
 }
 
-/* 3. PENGATURAN SLIDE GAMBAR */
+/* PENGATURAN SLIDE */
 .mySlides {
-    display: none; /* Disembunyikan, akan dimunculkan oleh script.js */
+    display: none; 
+    position: absolute; /* Gambar menumpuk di satu titik yang sama */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
 }
 
-/* Memaksa gambar tampil full screen tanpa gepeng */
+/* Memaksa gambar tampil full screen */
 .mySlides img {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover;
     display: block;
-    filter: brightness(60%); /* Membuat gambar agak gelap agar menu terbaca */
+    filter: brightness(60%);
 }
 
-/* 4. ANIMASI TRANSISI (FADE) */
+/* ANIMASI CROSSFADE YANG LEBIH HALUS */
 .fade {
-    animation-name: fadeEffect;
-    animation-duration: 2.5s; /* Kecepatan memudar */
+    animation-name: crossfade;
+    animation-duration: 2.5s; /* Durasi transisi (lebih lama = lebih halus) */
+    animation-fill-mode: forwards;
 }
 
-@keyframes fadeEffect {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
+@keyframes crossfade {
+    from { 
+        opacity: 0; 
+    }
+    to { 
+        opacity: 1; 
+    }
 }
 
 /* 5. NAVIGASI (DI ATAS GAMBAR) */
