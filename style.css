@@ -1,4 +1,3 @@
-/* RESET STANDAR */
 * {
     margin: 0;
     padding: 0;
@@ -8,58 +7,95 @@
 body, html {
     width: 100%;
     height: 100%;
+    font-family: 'Inter', sans-serif;
     background-color: #000;
+    color: #fff;
     overflow: hidden;
 }
 
-/* CONTAINER BACKGROUND */
+/* SLIDER (Tetap Smooth) */
 .background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 1; /* Lapisan paling belakang */
 }
 
-/* SEMUA SLIDE MENUMPUK DI SATU TITIK */
 .mySlides {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0; /* Semua gambar transparan dulu */
-    transition: opacity 2s ease-in-out; /* INI KUNCI TRANSISI HALUS */
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
 }
 
-/* GAMBAR FULL SCREEN */
+.mySlides.active {
+    opacity: 1;
+}
+
 .mySlides img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(60%);
+    filter: brightness(50%);
 }
 
-/* CLASS AKTIF (DIPANGGIL OLEH JS) */
-.mySlides.active {
-    opacity: 1; /* Gambar yang punya class 'active' akan muncul perlahan */
-}
-
-/* NAVIGASI DAN TEKS */
-nav {
+/* LAPISAN TULISAN (HEADER & HERO) */
+.main-layer {
     position: relative;
-    z-index: 10;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Di atas slider */
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVIGASI (Perbaikan Header) */
+nav {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 40px 60px;
+    width: 100%;
 }
 
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 60px;
-    transform: translateY(-50%);
-    z-index: 5;
+.logo {
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
     color: #fff;
+}
+
+/* TEXT TENGAH */
+.hero-content {
+    flex-grow: 1; /* Mengambil sisa ruang agar bisa diposisikan */
+    display: flex;
+    align-items: center;
+    padding-left: 60px;
+}
+
+.hero-content p {
+    font-size: 14px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
 }
