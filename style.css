@@ -88,10 +88,13 @@ nav ul li a:hover {
 
 /* TEXT TENGAH */
 .hero-content {
-    flex-grow: 1; /* Mengambil sisa ruang agar bisa diposisikan */
+    flex-grow: 1; /* Mengambil sisa ruang di bawah navigasi */
     display: flex;
-    align-items: center;
-    padding-left: 60px;
+    align-items: center;      /* Pusatkan secara vertikal */
+    justify-content: center;   /* Pusatkan secara horizontal */
+    text-align: center;        /* Pastikan teks di dalam baris juga rata tengah */
+    width: 100%;               /* Memastikan container selebar layar */
+    padding: 0;
 }
 
 .hero-content p {
