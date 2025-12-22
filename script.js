@@ -5,18 +5,21 @@ function showSlides() {
     let i;
     let slides = document.getElementsByClassName("mySlides");
     
-    // Pastikan ada slide sebelum menjalankan
-    if (slides.length === 0) return;
-
+    // Sembunyikan semua gambar
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
     }
     
     slideIndex++;
-    if (slideIndex > slides.length) {slideIndex = 1}    
     
+    // Jika sudah di gambar terakhir, kembali ke gambar pertama
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }    
+    
+    // Tampilkan gambar yang aktif
     slides[slideIndex-1].style.display = "block";  
     
-    // Berganti setiap 5 detik
+    // Jalankan fungsi ini lagi setiap 5000ms (5 detik)
     setTimeout(showSlides, 5000); 
 }
