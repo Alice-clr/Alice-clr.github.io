@@ -106,17 +106,45 @@ nav ul li a:hover {
     color: #fff;
     font-weight: 300;          /* Membuat teks terlihat lebih tipis dan elegan */
 }
+/* --- PERBAIKAN UNTUK MOBILE --- */
 @media screen and (max-width: 768px) {
-    /* Menghilangkan margin kaku dan memastikan header selebar layar */
-    header, .header-container {
-       width: 100% !important;
-        overflow-wrap: break-word; /* Memaksa link/email panjang untuk patah baris */
-        padding: 10px;
-        box-sizing: border-box;
+    
+    /* 1. Navigasi: Kurangi padding dan buat layout vertikal */
+    nav {
+        flex-direction: column; /* Logo di atas, menu di bawah */
+        padding: 20px 15px;      /* Padding kecil untuk HP */
+        gap: 15px;
     }
 
-    h1 {
-        font-size: 1.5rem; /* Ukuran font lebih kecil agar tidak pecah/lewat layar */
-        text-align: center;
+    .logo {
+        letter-spacing: 3px;     /* Kurangi jarak huruf agar tidak kepanjangan */
+        font-size: 18px;
+    }
+
+    /* 2. Menu Navigasi: Buat lebih rapat */
+    nav ul {
+        gap: 15px;               /* Jarak antar menu diperkecil */
+        padding: 0;
+    }
+
+    nav ul li a {
+        font-size: 10px;         /* Ukuran font menu lebih kecil */
+        letter-spacing: 1px;
+    }
+
+    /* 3. Hero Content (Teks Tengah): Masalah utama teks terpotong */
+    .hero-content p {
+        font-size: 10px;         /* Mengecilkan font */
+        letter-spacing: 5px;     /* MENGURANGI jarak huruf agar tidak melebihi lebar HP */
+        margin-right: -5px;      /* Seimbangkan dengan letter-spacing baru */
+        width: 90%;              /* Beri ruang sedikit di kiri-kanan */
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.5;
+    }
+
+    /* 4. Mencegah Scroll Horizontal yang tidak sengaja */
+    body {
+        overflow-x: hidden; 
     }
 }
