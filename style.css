@@ -147,4 +147,8 @@ nav ul li a:hover {
     body {
         overflow-x: hidden; 
     }
+
+    .projects-page {
+    overflow-y: auto; /* Membolehkan scroll ke bawah */
+    overflow-x: hidden; /* Tetap melarang scroll ke samping */
 }
