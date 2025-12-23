@@ -163,7 +163,7 @@ nav ul li a:hover {
 }
 /* --- TAMPILAN KHUSUS HALAMAN PROJECTS --- */
 .projects-page {
-    background-color: #ffffff !important;
+    background-color: #f1f1f1 !important;
     color: #000000 !important;
     overflow: hidden;
 }
@@ -225,18 +225,28 @@ nav ul li a:hover {
     .projects-container {
         flex-direction: column-reverse; /* Gambar di atas, list di bawah */
     }
-    .projects-list {
-        padding: 40px 20px;
-        align-items: center;
+    /* --- UPDATE AREA INI DI STYLE.CSS --- */
+.projects-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 100px;  /* JARAK DARI KIRI */
+    padding-right: 50px;  /* JARAK KE GAMBAR */
+}
+
+.projects-page nav {
+    padding: 30px 50px;   /* JARAK HEADER */
+}
     }
     .projects-page .project-item {
-        font-size: 1.2rem;
+        font-size: 1rem;
         letter-spacing: 2px;
     }
     .projects-display {
     flex: 1;
     position: relative;
-    background: #f0f0f0; /* Warna cadangan jika gambar loading */
+    background: #f1f1f1; /* Warna cadangan jika gambar loading */
 }
 
 /* Menghilangkan dekorasi link di list project */
