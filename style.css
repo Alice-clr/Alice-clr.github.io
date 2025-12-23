@@ -106,10 +106,18 @@ nav ul li a:hover {
     color: #fff;
     font-weight: 300;          /* Membuat teks terlihat lebih tipis dan elegan */
 }
-/* TAMBAHKAN INI DI BAWAH */
 @media screen and (max-width: 768px) {
-    .container {
-        width: 95%;  /* Mengubah 960px menjadi fleksibel 95% layar */
-        padding: 10px;
+    /* Menghilangkan margin kaku dan memastikan header selebar layar */
+    header, .header-container {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 20px 15px; /* Memberi ruang agar teks tidak nempel pinggir */
+        box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Ukuran font lebih kecil agar tidak pecah/lewat layar */
+        text-align: center;
     }
 }
