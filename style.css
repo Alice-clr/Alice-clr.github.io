@@ -109,11 +109,10 @@ nav ul li a:hover {
 @media screen and (max-width: 768px) {
     /* Menghilangkan margin kaku dan memastikan header selebar layar */
     header, .header-container {
-        width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding: 20px 15px; /* Memberi ruang agar teks tidak nempel pinggir */
-        box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+       width: 100% !important;
+        overflow-wrap: break-word; /* Memaksa link/email panjang untuk patah baris */
+        padding: 10px;
+        box-sizing: border-box;
     }
 
     h1 {
