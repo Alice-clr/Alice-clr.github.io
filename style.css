@@ -147,8 +147,78 @@ nav ul li a:hover {
     body {
         overflow-x: hidden; 
     }
+    
+}
+/* --- TAMPILAN KHUSUS HALAMAN PROJECTS --- */
+.projects-page {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    overflow: hidden;
+}
 
-    .projects-page {
-    overflow-y: auto; /* Membolehkan scroll ke bawah */
-    overflow-x: hidden; /* Tetap melarang scroll ke samping */
+/* Navigasi Hitam untuk Background Putih */
+.projects-page .main-nav .logo,
+.projects-page .main-nav ul li a {
+    color: #000 !important;
+}
+
+/* Layout Vertikal */
+.projects-container {
+    display: flex;
+    flex-direction: row; /* Tetap sampingan di desktop */
+    height: 100vh;
+    width: 100%;
+}
+
+.projects-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* LIST MENJADI VERTIKAL */
+    justify-content: center;
+    padding-left: 80px;
+}
+
+.projects-page .project-item {
+    color: rgba(0, 0, 0, 0.3); /* Abu-abu saat tidak di-hover */
+    font-size: 2.5rem;
+    margin: 10px 0;
+    transition: 0.5s ease;
+}
+
+.projects-page .project-item:hover {
+    color: #000; /* Hitam pekat saat hover */
+    padding-left: 15px;
+}
+
+/* --- ANIMASI FADE IN SAAT MASUK HALAMAN --- */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    pointer-events: none;
+    animation: fadeInPage 1.5s forwards;
+}
+
+@keyframes fadeInPage {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Update Responsif untuk Mobile */
+@media screen and (max-width: 768px) {
+    .projects-container {
+        flex-direction: column-reverse; /* Gambar di atas, list di bawah */
+    }
+    .projects-list {
+        padding: 40px 20px;
+        align-items: center;
+    }
+    .projects-page .project-item {
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+    }
 }
