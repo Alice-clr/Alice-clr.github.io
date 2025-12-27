@@ -163,7 +163,7 @@ nav ul li a:hover {
 }
 /* --- TAMPILAN KHUSUS HALAMAN PROJECTS --- */
 .projects-page {
-    background-color: #f1f1f1 !important;
+    background-color: #fff !important;
     color: #000000 !important;
     overflow: hidden;
 }
