@@ -124,7 +124,7 @@ nav ul li a:hover {
     /* 1. Navigasi: Kurangi padding dan buat layout vertikal */
     nav {
         flex-direction: column; /* Logo di atas, menu di bawah */
-        padding: 20px 15px;      /* Padding kecil untuk HP */
+        padding: 40px 60px;      /* Padding kecil untuk HP */
         gap: 15px;
     }
 
