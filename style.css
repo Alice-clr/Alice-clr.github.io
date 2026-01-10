@@ -1,10 +1,3 @@
-/* 1. DEKLARASI FONT CUSTOM */
-@font-face {
-    font-family: 'MunsterGotische';
-    src: url('fonts/MunsterGotische-Regular.ttf') format('truetype'); /* Sesuaikan path file font Anda */
-    font-weight: normal;
-    font-style: normal;
-}
 
 /* 2. RESET & DASAR */
 * {
@@ -35,8 +28,10 @@ nav {
 }
 
 .logo {
-    font-weight: 600;
-    letter-spacing: 5px;
+    font-family: 'Pirata One', system-ui;
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: 2px;
 }
 
 .logo a {
@@ -104,14 +99,14 @@ nav ul li a:hover {
     pointer-events: none;
 }
 
-/* Update Teks Hero: Menggunakan Munster Gotische */
 .hero-content p {
-    font-family: 'MunsterGotische', serif;
-    /* Ukuran font sangat fleksibel antara 40px hingga 120px */
-    font-size: clamp(40px, 10vw, 120px); 
-    letter-spacing: 2px;
+    font-family: 'Pirata One', system-ui; /* Menggunakan Pirata One */
+    font-size: clamp(50px, 12vw, 150px);  /* Ukuran fleksibel */
+    letter-spacing: 2px;                 /* Jarak huruf kecil saja agar terbaca */
     color: #fff;
-    text-transform: none; /* Gothic biasanya lebih baik tidak uppercase semua */
+    text-transform: none;                /* Menampilkan huruf besar-kecil asli */
+    font-weight: 400;                    /* Berat standar Pirata One */
+    margin-right: 0;
 }
 
 /* 5. HALAMAN PROJECTS (Background Putih) */
