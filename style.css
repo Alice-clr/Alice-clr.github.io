@@ -99,14 +99,22 @@ nav ul li a:hover {
     pointer-events: none;
 }
 
+/* --- BAGIAN INI YANG DIUBAH --- */
 .hero-content p {
-    font-family: 'Pirata One', system-ui; /* Menggunakan Pirata One */
-    font-size: clamp(50px, 12vw, 150px);  /* Ukuran fleksibel */
-    letter-spacing: 2px;                 /* Jarak huruf kecil saja agar terbaca */
+    font-family: 'Pirata One', system-ui;
+    font-size: clamp(50px, 12vw, 150px);
+    letter-spacing: 2px;
     color: #B22222;
-    text-transform: none;                /* Menampilkan huruf besar-kecil asli */
-    font-weight: 400;                    /* Berat standar Pirata One */
-    margin-right: 0;
+    text-transform: none;
+    font-weight: 400;
+
+    /* TAMBAHAN UNTUK EFEK STRETCH RAMPING */
+    display: inline-block;       /* 1. Wajib ada agar transform bekerja */
+    transform: scale(0.8, 1.4);  /* 2. Lebar 80% (kurus), Tinggi 140% (jangkung) */
+    transform-origin: center;    /* 3. Memastikan melebar dari titik tengah */
+    
+    line-height: 1;              /* 4. Menjaga kerapatan baris */
+    margin: 0;                   /* Reset margin agar rapi */
 }
 
 /* 5. HALAMAN PROJECTS (Background Putih) */
