@@ -1,3 +1,12 @@
+/* 1. DEKLARASI FONT CUSTOM */
+@font-face {
+    font-family: 'MunsterGotische';
+    src: url('fonts/MunsterGotische-Regular.ttf') format('truetype'); /* Sesuaikan path file font Anda */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. RESET & DASAR */
 * {
     margin: 0;
     padding: 0;
@@ -10,17 +19,57 @@ body, html {
     font-family: 'Inter', sans-serif;
     background-color: #000;
     color: #fff;
-    overflow: hidden;
+    overflow: hidden; /* Mencegah scroll pada homepage */
 }
 
-/* SLIDER (Tetap Smooth) */
+/* 3. NAVIGASI (Desktop & Global) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Menggunakan clamp agar padding mengecil di HP dan membesar di Laptop secara fluid */
+    padding: 20px clamp(20px, 6vw, 80px); 
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-weight: 600;
+    letter-spacing: 5px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: clamp(20px, 4vw, 40px);
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+/* 4. HOMEPAGE: SLIDER & HERO */
 .background-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Lapisan paling belakang */
+    z-index: 1;
 }
 
 .mySlides {
@@ -44,24 +93,80 @@ body, html {
     filter: brightness(50%);
 }
 
-/* LAPISAN TULISAN (HEADER & HERO) */
-.main-layer {
-    position: relative;
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
     width: 100%;
-    height: 100%;
-    z-index: 10; /* Di atas slider */
-    display: flex;
-    flex-direction: column;
+    pointer-events: none;
 }
 
-/* Perbaikan: Menghapus .main-nav karena di HTML hanya pakai tag nav */
+/* Update Teks Hero: Menggunakan Munster Gotische */
+.hero-content p {
+    font-family: 'MunsterGotische', serif;
+    /* Ukuran font sangat fleksibel antara 40px hingga 120px */
+    font-size: clamp(40px, 10vw, 120px); 
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: none; /* Gothic biasanya lebih baik tidak uppercase semua */
+}
+
+/* 5. HALAMAN PROJECTS (Background Putih) */
+.projects-page {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+/* Warna Navigasi di Halaman Project */
 .projects-page nav .logo,
 .projects-page nav .logo a,
 .projects-page nav ul li a {
     color: #000 !important;
 }
 
-/* Tambahan: Pastikan gambar preview di kanan punya ukuran yang pas */
+.projects-container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 100px); /* Memberi ruang untuk nav */
+    width: 100%;
+}
+
+.projects-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Jarak kiri fleksibel */
+    padding-left: clamp(20px, 8vw, 100px);
+    padding-right: 20px;
+}
+
+.project-item {
+    text-decoration: none;
+    display: block;
+    color: rgba(0, 0, 0, 0.3);
+    /* Font item project juga fleksibel */
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    margin: 10px 0;
+    transition: 0.5s ease;
+    letter-spacing: 2px;
+}
+
+.project-item:hover {
+    color: #000;
+    padding-left: 15px;
+}
+
+.projects-display {
+    flex: 1;
+    position: relative;
+    background: #f1f1f1;
+    overflow: hidden;
+}
+
 .project-preview {
     position: absolute;
     width: 100%;
@@ -75,134 +180,7 @@ body, html {
     opacity: 1;
 }
 
-.logo {
-    font-weight: 600;
-    letter-spacing: 5px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 12px;
-    letter-spacing: 2px;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #fff;
-}
-
-/* TEXT TENGAH (HERO) - POSISI PRESISI DI TENGAH LAYAR */
-.hero-content {
-    position: absolute;        /* Keluar dari aliran flex agar tidak terdorong navigasi */
-    top: 50%;                  /* Titik atas di tengah vertikal */
-    left: 50%;                 /* Titik kiri di tengah horizontal */
-    transform: translate(-50%, -50%); /* Geser kembali sejauh setengah ukuran teksnya sendiri */
-    z-index: 5;                /* Di bawah navigasi, di atas background */
-    text-align: center;
-    width: 100%;               /* Memastikan area teks mencakup lebar layar */
-    pointer-events: none;      /* Supaya tidak menghalangi klik jika ada link di belakangnya */
-}
-
-.hero-content p {
-    font-size: 14px;
-    letter-spacing: 12px;      /* Jarak antar huruf arsitektural */
-    text-transform: uppercase;
-    margin-right: -12px;       /* Menyeimbangkan spasi huruf terakhir agar simetris */
-    color: #fff;
-    font-weight: 300;          /* Membuat teks terlihat lebih tipis dan elegan */
-}
-/* --- PERBAIKAN UNTUK MOBILE --- */
-@media screen and (max-width: 768px) {
-    
-    /* 1. Navigasi: Kurangi padding dan buat layout vertikal */
-    nav {
-        flex-direction: column; /* Logo di atas, menu di bawah */
-        padding: 15px 30px;      /* Padding kecil untuk HP */
-        gap: 15px;
-    }
-
-    .logo {
-        letter-spacing: 3px;     /* Kurangi jarak huruf agar tidak kepanjangan */
-        font-size: 18px;
-    }
-
-    /* 2. Menu Navigasi: Buat lebih rapat */
-    nav ul {
-        gap: 15px;               /* Jarak antar menu diperkecil */
-        padding: 0;
-    }
-
-    nav ul li a {
-        font-size: 10px;         /* Ukuran font menu lebih kecil */
-        letter-spacing: 1px;
-    }
-
-    /* 3. Hero Content (Teks Tengah): Masalah utama teks terpotong */
-    .hero-content p {
-        font-size: 10px;         /* Mengecilkan font */
-        letter-spacing: 5px;     /* MENGURANGI jarak huruf agar tidak melebihi lebar HP */
-        margin-right: -5px;      /* Seimbangkan dengan letter-spacing baru */
-        width: 90%;              /* Beri ruang sedikit di kiri-kanan */
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.5;
-    }
-
-    /* 4. Mencegah Scroll Horizontal yang tidak sengaja */
-    body {
-        overflow-x: hidden; 
-    }
-    
-}
-/* --- TAMPILAN KHUSUS HALAMAN PROJECTS --- */
-.projects-page {
-    background-color: #fff !important;
-    color: #000000 !important;
-    overflow: hidden;
-}
-
-/* Navigasi Hitam untuk Background Putih */
-.projects-page .main-nav .logo,
-.projects-page .main-nav ul li a {
-    color: #000 !important;
-}
-
-/* Layout Vertikal */
-.projects-container {
-    display: flex;
-    flex-direction: row; /* Tetap sampingan di desktop */
-    height: 100vh;
-    width: 100%;
-}
-
-.projects-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column; /* LIST MENJADI VERTIKAL */
-    justify-content: center;
-    padding-left: 50px;
-}
-
-.projects-page .project-item {
-    color: rgba(0, 0, 0, 0.3); /* Abu-abu saat tidak di-hover */
-    font-size: 2.5rem;
-    margin: 10px 0;
-    transition: 0.5s ease;
-}
-
-.projects-page .project-item:hover {
-    color: #000; /* Hitam pekat saat hover */
-    padding-left: 15px;
-}
-
-/* --- ANIMASI FADE IN SAAT MASUK HALAMAN --- */
+/* 6. ANIMASI TRANSISI HALAMAN */
 .page-transition {
     position: fixed;
     top: 0;
@@ -220,37 +198,30 @@ nav ul li a:hover {
     100% { opacity: 0; }
 }
 
-/* Update Responsif untuk Mobile */
+/* 7. MEDIA QUERIES (Untuk penyesuaian tata letak kaku) */
 @media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
     .projects-container {
-        flex-direction: column-reverse; /* Gambar di atas, list di bawah */
+        flex-direction: column-reverse; /* Gambar di atas, list di bawah di HP */
+        height: auto;
     }
-    /* --- UPDATE AREA INI DI STYLE.CSS --- */
-.projects-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 50px;  /* JARAK DARI KIRI */
-    padding-right: 50px;  /* JARAK KE GAMBAR */
-}
 
-.projects-page nav {
-    padding: 30px 50px;   /* JARAK HEADER */
-}
+    .projects-list {
+        padding: 40px 20px;
+        align-items: center;
+        text-align: center;
     }
-    .projects-page .project-item {
-        font-size: 1rem;
-        letter-spacing: 2px;
-    }
+
     .projects-display {
-    flex: 1;
-    position: relative;
-    background: #f1f1f1; /* Warna cadangan jika gambar loading */
-}
+        height: 300px; /* Tinggi tetap untuk gambar di HP */
+        width: 100%;
+    }
 
-/* Menghilangkan dekorasi link di list project */
-.project-item {
-    text-decoration: none;
-    display: block;
+    body {
+        overflow-y: auto; /* Memungkinkan scroll di HP jika konten panjang */
+    }
 }
