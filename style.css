@@ -326,3 +326,77 @@ nav ul li a:hover {
         overflow-y: auto; /* Memungkinkan scroll di HP jika konten panjang */
     }
 }
+/* --- STYLE HALAMAN PROJECTS --- */
+
+/* Agar Navigasi rapi di atas */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 50px;
+    align-items: center;
+}
+
+.top-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.top-nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+/* Container Utama: Membagi Layar jadi 2 */
+.projects-container {
+    display: flex; /* Kuncinya disini: Flexbox */
+    height: 80vh; /* Tinggi layar */
+    align-items: center; /* Teks di tengah vertikal */
+    padding: 0 50px;
+}
+
+/* Bagian Kiri (List Text) */
+.project-list {
+    flex: 1; /* Mengambil 50% lebar */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Style Link Proyek (Agar tidak biru) */
+.list-item a {
+    text-decoration: none;
+    font-size: 2.5rem; /* Ukuran besar seperti desain awal */
+    color: #ccc; /* Abu-abu muda */
+    font-weight: 400;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.list-item a:hover {
+    color: #000; /* Jadi hitam saat di-hover */
+}
+
+.list-item .num {
+    font-size: 2.5rem;
+    margin-right: 15px;
+}
+
+/* Bagian Kanan (Gambar) */
+.project-preview {
+    flex: 1; /* Mengambil 50% lebar sisa */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar memenuhi kotak dengan rapi */
+    border-radius: 4px;
+}
