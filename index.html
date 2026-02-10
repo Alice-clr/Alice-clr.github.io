@@ -3,52 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio | Alice</title>
-    
+    <title>Projects | Alice Claire</title>
     <link rel="stylesheet" href="style.css">
-    
-    <link rel="icon" type="image/png" href="images/icon web mungkin.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Pirata+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="background-container">
-        <div class="mySlides"><img src="images/BALKON.png" alt="Slide 1"></div>
-        <div class="mySlides"><img src="images/MASJID.png" alt="Slide 2"></div>
-        <div class="mySlides"><img src="images/SECOND FLOOR.png" alt="Slide 3"></div>
+    <nav class="top-nav">
+        <div class="logo"><a href="index.html">aliceclaire</a></div>
+        <ul class="menu">
+            <li><a href="projects.html" class="active">PROJECTS</a></li>
+            <li><a href="index.html#about">ABOUT</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+        </ul>
+    </nav>
 
-        <div class="main-layer">
-            <nav>
-                <div class="logo">aliceclaire</div>
-                <ul>
-                    <li><a href="projects.html">PROJECTS</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-
-            <div class="hero-content">
-                <p>PORTFOLIO</p>
-            </div>
-        </div>
-    </div>
-
-    <section class="latest-project" style="padding: 50px 20px; background-color: #fff;">
-        <h2 style="text-align:center; margin-bottom:30px;">Featured Project</h2>
+    <main class="projects-container">
         
-        <div class="project-card">
-            <img src="images/Islamic-School-Assets/grafis-sekolah.png" alt="Desain Islamic School Surakarta" class="project-img">
+        <div class="project-list">
             
-            <div class="project-content">
-                <h3>Tarbiyatul Alam Islamic School</h3>
-                <p>Perancangan sekolah berbasis arsitektur Islam dengan pendekatan zonasi spasial di Surakarta.</p>
-                
-                <a href="Projects/islamic-school.html" class="btn-detail">Lihat Detail Proyek &rarr;</a>
+            <div class="list-item">
+                <a href="projects/islamic-school.html">
+                    <span class="num">01.</span> Islamic School
+                </a>
+            </div>
+
+            <div class="list-item">
+                <a href="#"> <span class="num">02.</span> Balangan Toilet
+                </a>
+            </div>
+
+            <div class="list-item">
+                <a href="#"> <span class="num">03.</span> Timber Building
+                </a>
             </div>
         </div>
-    </section>
-    
-    <script src="script.js"></script>
+
+        <div class="project-preview">
+            <img src="images/Islamic-School-Assets/grafis-sekolah.png" alt="Project Preview">
+        </div>
+
+    </main>
+
 </body>
 </html>
