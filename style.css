@@ -400,3 +400,113 @@ nav ul li a:hover {
     object-fit: cover; /* Agar gambar memenuhi kotak dengan rapi */
     border-radius: 4px;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Mengunci Scroll Per Halaman */
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.project-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.project-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Wrapper Gambar Background */
+.project-bg-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.project-bg-wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.img-hover {
+    opacity: 0; /* Sembunyi secara default */
+}
+
+/* SENSOR HOVER SISI KANAN */
+.hover-trigger-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%; /* Mengaktifkan sensor di 50% area kanan layar */
+    height: 100%;
+    z-index: 10;
+    cursor: pointer;
+}
+
+/* Logika Pergantian Gambar */
+.hover-trigger-right:hover ~ .img-base {
+    opacity: 0;
+}
+
+.hover-trigger-right:hover ~ .img-hover {
+    opacity: 1;
+}
+
+/* Konten Teks */
+.project-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    max-width: 800px;
+    padding: 20px;
+    pointer-events: none; /* Supaya tidak mengganggu sensor hover */
+}
+
+.category {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.project-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.project-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.details {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
