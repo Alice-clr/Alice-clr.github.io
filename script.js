@@ -36,3 +36,33 @@ if (projectLinks.length > 0) {
         });
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll('.project-section');
+
+    const options = {
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const content = entry.target.querySelector('.project-content');
+            if (entry.isIntersecting) {
+                // Munculkan teks dengan animasi halus
+                content.style.opacity = "1";
+                content.style.transform = "translateY(0)";
+            } else {
+                // Sembunyikan teks kembali saat keluar layar
+                content.style.opacity = "0";
+                content.style.transform = "translateY(50px)";
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        const content = section.querySelector('.project-content');
+        content.style.transition = "all 1s ease-out";
+        content.style.opacity = "0";
+        content.style.transform = "translateY(50px)";
+        observer.observe(section);
+    });
+});
