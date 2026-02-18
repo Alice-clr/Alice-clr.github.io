@@ -84,11 +84,10 @@ nav ul li a:hover { color: #fff; }
 
 .hero-content p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(50px, 12vw, 150px);
+    font-size: clamp(25px, 12vw, 100px);
     color: #B22222;
     display: inline-block;
-    transform: scale(0.8, 1.4);
-}
+    
 
 /* ==========================================
    4. PROJECTS PAGE (Full-page Scroll Snap)
