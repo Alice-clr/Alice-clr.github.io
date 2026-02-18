@@ -87,7 +87,7 @@ nav ul li a:hover { color: #fff; }
     font-size: clamp(25px, 12vw, 100px);
     color: #B22222;
     display: inline-block;
-    
+    transform: scale(1, 1); /* Angka 0.8 adalah lebar, 1.4 adalah tinggi */
 
 /* ==========================================
    4. PROJECTS PAGE (Full-page Scroll Snap)
