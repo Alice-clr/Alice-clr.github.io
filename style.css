@@ -510,3 +510,45 @@ html, body {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+/* Container gambar memenuhi seluruh layar */
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Di bawah teks */
+}
+
+.background-wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar tidak gepeng */
+    transition: opacity 0.6s ease-in-out; /* Animasi memudar */
+}
+
+/* Gambar kedua sembunyi dulu */
+.gambar-hover {
+    opacity: 0;
+}
+
+/* Sensor di sisi kanan layar (lebar 50%) */
+.sensor-kanan {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 10; /* Di atas gambar */
+    cursor: pointer;
+}
+
+/* LOGIKA: Jika sensor-kanan di-hover, ubah opacity gambar */
+.sensor-kanan:hover ~ .gambar-base {
+    opacity: 0; /* Gambar utama hilang */
+}
+
+.sensor-kanan:hover ~ .gambar-hover {
+    opacity: 1; /* Gambar kedua muncul */
+}
