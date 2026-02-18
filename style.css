@@ -102,10 +102,10 @@ nav ul li a:hover { color: #fff; }
 
 .hero-content p {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(25px, 12vw, 100px);
+    font-size: clamp(20px, 12vw, 150px);
     color: #fff;
     display: inline-block;
-    transform: scale(1, 1); /* Angka 0.8 adalah lebar, 1.4 adalah tinggi */
+    transform: scale(1, 1.2); /* Angka 0.8 adalah lebar, 1.4 adalah tinggi */
 
 /* ==========================================
    4. PROJECTS PAGE (Full-page Scroll Snap)
