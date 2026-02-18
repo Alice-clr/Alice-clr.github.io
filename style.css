@@ -93,11 +93,34 @@ nav ul li a:hover { color: #fff; }
 /* ==========================================
    4. PROJECTS PAGE (Full-page Scroll Snap)
    ========================================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* overflow: hidden tetap di sini agar tidak ada double scrollbar */
+    overflow: hidden; 
+}
+
 .project-container {
-    height: 100vh;
-    overflow-y: scroll;
+    /* KUNCI: Wadah ini harus punya tinggi 100% layar agar bisa di-scroll */
+    height: 100vh; 
+    width: 100%;
+    
+    /* KUNCI: Izinkan scroll hanya di dalam wadah ini */
+    overflow-y: scroll; 
+    
+    /* Efek magnet */
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+
+    /* Opsional: Sembunyikan scrollbar agar terlihat lebih bersih (seperti Teenage Engineering) */
+    -ms-overflow-style: none;  /* Internet Explorer */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.project-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+};
 }
 
 .project-section {
