@@ -1,5 +1,7 @@
-
-/* 2. RESET & DASAR */
+/* ==========================================
+   1. GLOBAL RESET & BASE 
+   (Berlaku untuk SEMUA halaman)
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -12,94 +14,30 @@ body, html {
     font-family: 'Inter', sans-serif;
     background-color: #000;
     color: #fff;
-    overflow: hidden; /* Mencegah scroll pada homepage */
+    overflow: hidden; /* Dikunci agar scroll-snap yang bekerja */
 }
 
-/* 3. NAVIGASI (Desktop & Global) */
+/* ==========================================
+   2. NAVIGASI (Tetap di atas di semua halaman)
+   ========================================== */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Menggunakan clamp agar padding mengecil di HP dan membesar di Laptop secara fluid */
     padding: 20px clamp(20px, 6vw, 80px); 
     width: 100%;
-    position: relative;
+    position: fixed; /* Navigasi melayang */
+    top: 0;
     z-index: 100;
 }
-/* --- CSS KHUSUS HALAMAN DETAIL PROYEK --- */
 
-.project-hero {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #f4f4f4; /* Warna abu-abu muda */
-}
-
-.project-meta {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-}
-
-.meta-item strong {
-    display: block;
-    font-size: 0.9rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.project-content {
-    max-width: 900px; /* Membatasi lebar agar enak dibaca */
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.main-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 40px;
-}
-
-/* Grid untuk Galeri Gambar */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsif: 1 kolom di HP, 2 di Laptop */
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-    transition: transform 0.3s;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.02); /* Efek zoom sedikit saat di-hover */
-}
-
-figcaption {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 5px;
-    font-style: italic;
-}
 .logo {
-    font-family: 'Inter', sans-serif;
     font-weight: 200;
     font-size: 18px;
     letter-spacing: 5px;
 }
 
-.logo a {
-    text-decoration: none;
-    color: inherit;
-}
+.logo a { text-decoration: none; color: inherit; }
 
 nav ul {
     display: flex;
@@ -115,304 +53,46 @@ nav ul li a {
     transition: 0.3s;
 }
 
-nav ul li a:hover {
-    color: #fff;
-}
+nav ul li a:hover { color: #fff; }
 
-/* 4. HOMEPAGE: SLIDER & HERO */
+/* ==========================================
+   3. HOMEPAGE (Hanya aktif jika ada di HTML)
+   ========================================== */
 .background-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: 1;
 }
 
 .mySlides {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     opacity: 0;
     transition: opacity 2s ease-in-out;
 }
 
-.mySlides.active {
-    opacity: 1;
-}
-
-.mySlides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(50%);
-}
+.mySlides.active { opacity: 1; }
 
 .hero-content {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5;
     text-align: center;
     width: 100%;
-    pointer-events: none;
 }
 
-/* --- BAGIAN INI YANG DIUBAH --- */
 .hero-content p {
     font-family: 'Pirata One', system-ui;
     font-size: clamp(50px, 12vw, 150px);
-    letter-spacing: 2px;
     color: #B22222;
-    text-transform: none;
-    font-weight: 400;
-
-    /* TAMBAHAN UNTUK EFEK STRETCH RAMPING */
-    display: inline-block;       /* 1. Wajib ada agar transform bekerja */
-    transform: scale(0.8, 1.4);  /* 2. Lebar 80% (kurus), Tinggi 140% (jangkung) */
-    transform-origin: center;    /* 3. Memastikan melebar dari titik tengah */
-    
-    line-height: 1;              /* 4. Menjaga kerapatan baris */
-    margin: 0;                   /* Reset margin agar rapi */
-}
-
-/* 5. HALAMAN PROJECTS (Background Putih) */
-.projects-page {
-    background-color: #fff !important;
-    color: #000 !important;
-}
-
-/* Warna Navigasi di Halaman Project */
-.projects-page nav .logo,
-.projects-page nav .logo a,
-.projects-page nav ul li a {
-    color: #000 !important;
-}
-
-.projects-container {
-    display: flex;
-    flex-direction: row;
-    height: calc(100vh - 100px); /* Memberi ruang untuk nav */
-    width: 100%;
-}
-
-.projects-list {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* Jarak kiri fleksibel */
-    padding-left: clamp(20px, 8vw, 100px);
-    padding-right: 20px;
-}
-
-.project-item {
-    text-decoration: none;
-    display: block;
-    color: rgba(0, 0, 0, 0.3);
-    /* Font item project juga fleksibel */
-    font-size: clamp(1.2rem, 3vw, 2.5rem);
-    margin: 10px 0;
-    transition: 0.5s ease;
-    letter-spacing: 2px;
-}
-
-.project-item:hover {
-    color: #000;
-    padding-left: 15px;
-}
-
-.projects-display {
-    flex: 1;
-    position: relative;
-    background: #f1f1f1;
-    overflow: hidden;
-}
-
-.project-preview {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.project-preview.active {
-    opacity: 1;
-}
-
-/* 6. ANIMASI TRANSISI HALAMAN */
-.page-transition {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: white;
-    z-index: 9999;
-    pointer-events: none;
-    animation: fadeInPage 1.5s forwards;
-}
-
-@keyframes fadeInPage {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-/* 7. MEDIA QUERIES (Untuk penyesuaian tata letak kaku) */
-@media screen and (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .projects-container {
-        flex-direction: column-reverse; /* Gambar di atas, list di bawah di HP */
-        height: auto;
-    }
-
-    .projects-list {
-        padding: 40px 20px;
-        align-items: center;
-        text-align: center;
-    }
-
-    .projects-display {
-        height: 300px; /* Tinggi tetap untuk gambar di HP */
-        width: 100%;
-    }
-
-    /* Container untuk kartu proyek */
-.project-card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s ease; /* Efek saat di-hover */
-    background: #fff;
-    margin-bottom: 20px;
-}
-
-/* Efek saat mouse diarahkan ke kartu */
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Mengatur ukuran gambar agar rapi */
-.project-img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover; /* Agar gambar tidak gepeng */
-}
-
-.project-content {
-    padding: 20px;
-}
-
-.btn-detail {
     display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    border-bottom: 2px solid #333;
+    transform: scale(0.8, 1.4);
 }
 
-    body {
-        overflow-y: auto; /* Memungkinkan scroll di HP jika konten panjang */
-    }
-}
-/* --- STYLE HALAMAN PROJECTS --- */
-
-/* Agar Navigasi rapi di atas */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 50px;
-    align-items: center;
-}
-
-.top-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-.top-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-
-/* Container Utama: Membagi Layar jadi 2 */
-.projects-container {
-    display: flex; /* Kuncinya disini: Flexbox */
-    height: 80vh; /* Tinggi layar */
-    align-items: center; /* Teks di tengah vertikal */
-    padding: 0 50px;
-}
-
-/* Bagian Kiri (List Text) */
-.project-list {
-    flex: 1; /* Mengambil 50% lebar */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* Style Link Proyek (Agar tidak biru) */
-.list-item a {
-    text-decoration: none;
-    font-size: 2.5rem; /* Ukuran besar seperti desain awal */
-    color: #ccc; /* Abu-abu muda */
-    font-weight: 400;
-    transition: color 0.3s ease;
-    display: block;
-}
-
-.list-item a:hover {
-    color: #000; /* Jadi hitam saat di-hover */
-}
-
-.list-item .num {
-    font-size: 2.5rem;
-    margin-right: 15px;
-}
-
-/* Bagian Kanan (Gambar) */
-.project-preview {
-    flex: 1; /* Mengambil 50% lebar sisa */
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.project-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Agar gambar memenuhi kotak dengan rapi */
-    border-radius: 4px;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Mengunci Scroll Per Halaman */
-html, body {
-    height: 100%;
-    overflow: hidden;
-}
-
+/* ==========================================
+   4. PROJECTS PAGE (Full-page Scroll Snap)
+   ========================================== */
 .project-container {
     height: 100vh;
     overflow-y: scroll;
@@ -431,124 +111,50 @@ html, body {
     overflow: hidden;
 }
 
-/* Wrapper Gambar Background */
 .project-bg-wrapper {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     z-index: 1;
 }
 
 .project-bg-wrapper img {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
     transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.img-hover {
-    opacity: 0; /* Sembunyi secara default */
-}
+.img-hover { opacity: 0; }
 
 /* SENSOR HOVER SISI KANAN */
 .hover-trigger-right {
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 50%; /* Mengaktifkan sensor di 50% area kanan layar */
-    height: 100%;
+    right: 0; top: 0; width: 50%; height: 100%;
     z-index: 10;
     cursor: pointer;
 }
 
-/* Logika Pergantian Gambar */
-.hover-trigger-right:hover ~ .img-base {
-    opacity: 0;
-}
+.hover-trigger-right:hover ~ .img-base { opacity: 0; }
+.hover-trigger-right:hover ~ .img-hover { opacity: 1; }
 
-.hover-trigger-right:hover ~ .img-hover {
-    opacity: 1;
-}
-
-/* Konten Teks */
 .project-content {
     position: relative;
-    z-index: 5;
+    z-index: 20;
     text-align: center;
-    color: white;
-    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
     max-width: 800px;
-    padding: 20px;
-    pointer-events: none; /* Supaya tidak mengganggu sensor hover */
-}
-
-.category {
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 15px;
-    opacity: 0.8;
+    pointer-events: none;
 }
 
 .project-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 4rem);
     margin-bottom: 20px;
-    font-weight: 700;
 }
 
-.project-content p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    font-weight: 300;
-}
-
-.details {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-/* Container gambar memenuhi seluruh layar */
-.background-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* Di bawah teks */
-}
-
-.background-wrapper img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Gambar tidak gepeng */
-    transition: opacity 0.6s ease-in-out; /* Animasi memudar */
-}
-
-/* Gambar kedua sembunyi dulu */
-.gambar-hover {
-    opacity: 0;
-}
-
-/* Sensor di sisi kanan layar (lebar 50%) */
-.sensor-kanan {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    z-index: 10; /* Di atas gambar */
-    cursor: pointer;
-}
-
-/* LOGIKA: Jika sensor-kanan di-hover, ubah opacity gambar */
-.sensor-kanan:hover ~ .gambar-base {
-    opacity: 0; /* Gambar utama hilang */
-}
-
-.sensor-kanan:hover ~ .gambar-hover {
-    opacity: 1; /* Gambar kedua muncul */
+/* ==========================================
+   5. MEDIA QUERIES (Mobile)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    body { overflow-y: auto; }
+    .project-container { scroll-snap-type: none; }
+    .project-section { height: auto; min-height: 600px; }
 }
