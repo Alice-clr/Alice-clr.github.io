@@ -35,10 +35,22 @@ nav {
     font-weight: 200;
     font-size: 18px;
     letter-spacing: 5px;
+    
+    /* KUNCI: Memastikan logo selalu berada di lapisan paling atas dan bisa diklik */
+    position: relative;
+    z-index: 101; 
 }
 
-.logo a { text-decoration: none; color: inherit; }
+.logo a { 
+    text-decoration: none; /* Menghilangkan garis bawah khas link */
+    color: inherit; /* Mengikuti warna teks sekitarnya (putih/hitam) */
+    cursor: pointer; /* Mengubah kursor panah menjadi kursor tangan (klik) */
+    transition: opacity 0.3s ease; /* Efek transisi halus */
+}
 
+.logo a:hover {
+    opacity: 0.6; /* Membuat logo sedikit memudar saat disentuh mouse agar terasa interaktif */
+}
 nav ul {
     display: flex;
     list-style: none;
